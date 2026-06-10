@@ -123,6 +123,27 @@ transition: background 0.2s, transform 0.2s !important;
 
 /* HERO */
 .hero {
+.hero-mascot {
+position: absolute;
+right: 60px;
+top: 140px;
+width: 320px;
+z-index: 5;
+pointer-events: none;
+display: block;
+}
+
+.hero-mascot-bg {
+position: absolute;
+right: 20px;
+top: 80px;
+width: 420px;
+height: 420px;
+background: radial-gradient(circle, rgba(245,184,0,0.18) 0%, transparent 70%);
+z-index: 4;
+pointer-events: none;
+display: block;
+}
 min-height: 100vh;
 display: flex; align-items: center;
 position: relative; overflow: hidden;
