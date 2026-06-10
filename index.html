@@ -125,14 +125,33 @@ transition: background 0.2s, transform 0.2s !important;
 .hero {
 .hero-mascot {
 position: absolute;
-right: 60px;
-top: 140px;
-width: 320px;
-z-index: 5;
-pointer-events: none;
-display: block;
-}
+right: 8%;
+top: 50%;
+transform: translateY(-50%);
+width: 520px;
 
+z-index: 1;
+opacity: 0.85;
+
+filter: 
+drop-shadow(0 0 40px rgba(245,184,0,0.35))
+drop-shadow(0 0 80px rgba(245,184,0,0.25));
+
+mix-blend-mode: screen;
+}
+.hero::after {
+content: "";
+position: absolute;
+right: 5%;
+top: 50%;
+transform: translateY(-50%);
+width: 600px;
+height: 600px;
+
+background: radial-gradient(circle, rgba(245,184,0,0.18) 0%, transparent 75%);
+z-index: 0;
+pointer-events: none;
+}
 .hero-mascot-bg {
 position: absolute;
 right: 20px;
