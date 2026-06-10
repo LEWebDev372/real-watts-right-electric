@@ -716,6 +716,1163 @@ ELECTRIC
 </a>
 </div>
 </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watt's Right Electric | Tulsa & Broken Arrow, OK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+--gold: #F5B800;
+--gold-light: #FFD84D;
+--gold-dark: #C99500;
+--black: #0A0A0A;
+--dark: #111111;
+--dark2: #1A1A1A;
+--dark3: #222222;
+--white: #F8F6F0;
+--gray: #888888;
+--gray-light: #CCCCCC;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(--black);
+color: var(--white);
+font-family: 'Barlow', sans-serif;
+font-weight: 300;
+overflow-x: hidden;
+cursor: none;
+}
+
+/* Custom Cursor */
+.cursor {
+width: 12px; height: 12px;
+background: var(--gold);
+border-radius: 50%;
+position: fixed; top: 0; left: 0;
+pointer-events: none;
+z-index: 9999;
+transition: transform 0.15s ease;
+mix-blend-mode: difference;
+}
+.cursor-ring {
+width: 36px; height: 36px;
+border: 1.5px solid var(--gold);
+border-radius: 50%;
+position: fixed; top: 0; left: 0;
+pointer-events: none;
+z-index: 9998;
+transition: transform 0.4s cubic-bezier(.23,1,.32,1), opacity 0.3s;
+opacity: 0.6;
+}
+
+/* NAV */
+nav {
+position: fixed; top: 0; left: 0; right: 0;
+z-index: 100;
+padding: 0 60px;
+height: 80px;
+display: flex; align-items: center; justify-content: space-between;
+background: linear-gradient(to bottom, rgba(10,10,10,0.98) 0%, transparent 100%);
+transition: background 0.3s;
+}
+nav.scrolled { background: rgba(10,10,10,0.98); border-bottom: 1px solid rgba(245,184,0,0.15); }
+
+.nav-logo {
+display: flex; align-items: center; gap: 14px;
+text-decoration: none;
+}
+.nav-logo-bolt {
+width: 36px; height: 36px;
+background: var(--gold);
+clip-path: polygon(60% 0%, 40% 45%, 65% 45%, 35% 100%, 55% 55%, 30% 55%);
+flex-shrink: 0;
+}
+.nav-logo-text { display: flex; flex-direction: column; line-height: 1; }
+.nav-logo-top {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 22px; letter-spacing: 3px;
+color: var(--white);
+}
+.nav-logo-bottom {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 11px; letter-spacing: 5px;
+color: var(--gold); text-transform: uppercase;
+font-weight: 600;
+}
+
+.nav-links {
+display: flex; align-items: center; gap: 40px;
+list-style: none;
+}
+.nav-links a {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase;
+color: var(--gray-light); text-decoration: none;
+font-weight: 600;
+transition: color 0.2s;
+position: relative;
+}
+.nav-links a::after {
+content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
+background: var(--gold); transform: scaleX(0); transform-origin: left;
+transition: transform 0.3s ease;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+background: var(--gold);
+color: var(--black) !important;
+padding: 10px 24px !important;
+font-weight: 700 !important;
+letter-spacing: 2px !important;
+transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px) !important; }
+
+/* HERO */
+.hero {
+min-height: 100vh;
+display: flex; align-items: center;
+position: relative; overflow: hidden;
+padding: 120px 60px 80px;
+}
+
+.hero-bg {
+position: absolute; inset: 0;
+background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(245,184,0,0.07) 0%, transparent 70%),
+radial-gradient(ellipse 40% 40% at 20% 80%, rgba(245,184,0,0.04) 0%, transparent 60%);
+}
+
+.hero-grid {
+position: absolute; inset: 0; opacity: 0.04;
+background-image: linear-gradient(rgba(245,184,0,0.8) 1px, transparent 1px),
+linear-gradient(90deg, rgba(245,184,0,0.8) 1px, transparent 1px);
+background-size: 60px 60px;
+}
+
+.hero-bolt-bg {
+position: absolute; right: -5%; top: 50%; transform: translateY(-50%);
+width: 55vw; height: 100vh;
+opacity: 0.025;
+background: var(--gold);
+clip-path: polygon(55% 0%, 30% 42%, 58% 42%, 25% 100%, 50% 58%, 18% 58%);
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+.hero-badge {
+display: inline-flex; align-items: center; gap: 10px;
+background: rgba(245,184,0,0.1);
+border: 1px solid rgba(245,184,0,0.3);
+padding: 8px 18px; border-radius: 2px;
+margin-bottom: 32px;
+animation: fadeUp 0.8s ease both;
+}
+.hero-badge span {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+color: var(--gold); font-weight: 600;
+}
+.hero-badge-dot {
+width: 6px; height: 6px; border-radius: 50%;
+background: var(--gold);
+animation: pulse 2s infinite;
+}
+
+.hero-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(72px, 10vw, 140px);
+line-height: 0.9;
+letter-spacing: 2px;
+color: var(--white);
+animation: fadeUp 0.8s 0.1s ease both;
+margin-bottom: 8px;
+}
+.hero-title .gold { color: var(--gold); }
+
+.hero-slogan {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: clamp(18px, 3vw, 28px);
+letter-spacing: 4px; text-transform: uppercase;
+color: var(--gray); font-weight: 400;
+margin-bottom: 36px;
+animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-slogan em { color: var(--gold); font-style: normal; font-weight: 600; }
+
+.hero-desc {
+font-size: 17px; line-height: 1.7;
+color: #999; max-width: 540px;
+margin-bottom: 48px;
+animation: fadeUp 0.8s 0.3s ease both;
+font-weight: 300;
+}
+
+.hero-actions {
+display: flex; gap: 16px; flex-wrap: wrap;
+animation: fadeUp 0.8s 0.4s ease both;
+}
+
+.btn-primary {
+display: inline-flex; align-items: center; gap: 10px;
+background: var(--gold); color: var(--black);
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase;
+font-weight: 700; padding: 16px 36px; text-decoration: none;
+transition: all 0.25s ease; position: relative; overflow: hidden;
+border: none; cursor: none;
+}
+.btn-primary::before {
+content: ''; position: absolute; inset: 0;
+background: var(--gold-light); transform: scaleX(0); transform-origin: left;
+transition: transform 0.3s ease; z-index: 0;
+}
+.btn-primary:hover::before { transform: scaleX(1); }
+.btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(245,184,0,0.3); }
+
+.btn-secondary {
+display: inline-flex; align-items: center; gap: 10px;
+background: transparent; color: var(--white);
+border: 1px solid rgba(255,255,255,0.2);
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 14px; letter-spacing: 2.5px; text-transform: uppercase;
+font-weight: 600; padding: 16px 36px; text-decoration: none;
+transition: all 0.25s ease; cursor: none;
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+.hero-stats {
+position: absolute; right: 60px; bottom: 80px;
+display: flex; gap: 48px;
+animation: fadeUp 0.8s 0.5s ease both;
+}
+.hero-stat { text-align: right; }
+.hero-stat-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 48px; color: var(--gold); line-height: 1;
+}
+.hero-stat-label {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+color: var(--gray); font-weight: 600;
+}
+
+/* MARQUEE */
+.marquee-strip {
+background: var(--gold);
+padding: 14px 0;
+overflow: hidden;
+white-space: nowrap;
+}
+.marquee-inner {
+display: inline-block;
+animation: marquee 30s linear infinite;
+}
+.marquee-item {
+display: inline-flex; align-items: center; gap: 20px;
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+font-weight: 700; color: var(--black);
+padding: 0 30px;
+}
+.marquee-sep {
+width: 5px; height: 5px; background: var(--black);
+border-radius: 50%; opacity: 0.4;
+}
+
+/* SECTION BASE */
+section { padding: 120px 60px; }
+.section-label {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+color: var(--gold); font-weight: 600;
+display: flex; align-items: center; gap: 12px;
+margin-bottom: 24px;
+}
+.section-label::before {
+content: ''; display: block; width: 30px; height: 1px; background: var(--gold);
+}
+.section-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(48px, 6vw, 80px);
+letter-spacing: 1px; line-height: 0.95;
+color: var(--white); margin-bottom: 24px;
+}
+.section-title .gold { color: var(--gold); }
+
+/* ABOUT / WHY US */
+.about {
+background: var(--dark);
+display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center;
+}
+.about-visual {
+position: relative;
+}
+.about-img-frame {
+width: 100%; aspect-ratio: 4/5;
+background: var(--dark3);
+position: relative; overflow: hidden;
+}
+.about-img-inner {
+width: 100%; height: 100%;
+background: linear-gradient(135deg, var(--dark3) 0%, #1e1e1e 50%, var(--dark2) 100%);
+display: flex; align-items: center; justify-content: center;
+}
+.about-big-bolt {
+width: 160px; height: 220px;
+background: var(--gold);
+clip-path: polygon(65% 0%, 35% 44%, 65% 44%, 28% 100%, 55% 56%, 20% 56%);
+opacity: 0.15;
+}
+.about-accent-line {
+position: absolute; bottom: -20px; right: -20px;
+width: 60%; height: 60%;
+border: 1px solid rgba(245,184,0,0.2);
+pointer-events: none;
+}
+.about-badge-founded {
+position: absolute; top: -20px; left: -20px;
+width: 100px; height: 100px;
+background: var(--gold);
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+gap: 2px;
+}
+.about-badge-founded .year {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 32px; color: var(--black); line-height: 1;
+}
+.about-badge-founded .label {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+color: var(--black); font-weight: 700;
+}
+
+.about-text p {
+font-size: 16px; line-height: 1.8; color: #999; margin-bottom: 20px;
+}
+.about-pillars {
+display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+margin-top: 40px;
+}
+.pillar {
+background: var(--dark2);
+padding: 24px 20px;
+border-top: 2px solid transparent;
+transition: border-color 0.3s, background 0.3s;
+}
+.pillar:hover { border-color: var(--gold); background: #1e1e1e; }
+.pillar-icon {
+font-size: 24px; margin-bottom: 10px;
+}
+.pillar-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 15px; letter-spacing: 1px; text-transform: uppercase;
+font-weight: 700; color: var(--white); margin-bottom: 6px;
+}
+.pillar-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+/* SERVICES */
+.services { background: var(--black); }
+.services-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2px; margin-top: 60px;
+}
+.service-card {
+background: var(--dark);
+padding: 40px 32px;
+position: relative; overflow: hidden;
+transition: background 0.3s;
+cursor: none;
+}
+.service-card::before {
+content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+background: var(--gold); transform: scaleX(0); transform-origin: left;
+transition: transform 0.4s ease;
+}
+.service-card:hover { background: var(--dark2); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-card-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 64px; color: rgba(245,184,0,0.06);
+line-height: 1; position: absolute; top: 16px; right: 20px;
+transition: color 0.3s;
+}
+.service-card:hover .service-card-num { color: rgba(245,184,0,0.1); }
+.service-icon {
+width: 44px; height: 44px; margin-bottom: 20px;
+display: flex; align-items: center; justify-content: center;
+background: rgba(245,184,0,0.1);
+border: 1px solid rgba(245,184,0,0.2);
+transition: background 0.3s;
+}
+.service-card:hover .service-icon { background: rgba(245,184,0,0.2); }
+.service-icon svg { width: 20px; height: 20px; color: var(--gold); }
+.service-name {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 20px; letter-spacing: 1px; text-transform: uppercase;
+font-weight: 700; color: var(--white); margin-bottom: 12px;
+}
+.service-desc { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+/* PROCESS */
+.process {
+background: var(--dark);
+}
+.process-steps {
+display: grid; grid-template-columns: repeat(4, 1fr);
+gap: 0; margin-top: 70px;
+position: relative;
+}
+.process-steps::before {
+content: ''; position: absolute;
+top: 32px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+height: 1px; background: rgba(245,184,0,0.2);
+}
+.process-step { padding: 0 24px; text-align: center; }
+.step-num-wrap {
+width: 64px; height: 64px; margin: 0 auto 28px;
+background: var(--dark2);
+border: 1px solid rgba(245,184,0,0.3);
+display: flex; align-items: center; justify-content: center;
+position: relative; z-index: 1;
+transition: all 0.3s;
+}
+.process-step:hover .step-num-wrap {
+background: var(--gold); border-color: var(--gold);
+}
+.step-num {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 28px; color: var(--gold);
+transition: color 0.3s;
+}
+.process-step:hover .step-num { color: var(--black); }
+.step-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 18px; letter-spacing: 1px; text-transform: uppercase;
+font-weight: 700; color: var(--white); margin-bottom: 12px;
+}
+.step-desc { font-size: 13px; line-height: 1.7; color: var(--gray); }
+
+/* TESTIMONIALS */
+.testimonials { background: var(--black); }
+.testimonials-grid {
+display: grid; grid-template-columns: repeat(3, 1fr);
+gap: 2px; margin-top: 60px;
+}
+.testimonial-card {
+background: var(--dark);
+padding: 40px 32px;
+position: relative;
+transition: background 0.3s;
+}
+.testimonial-card:hover { background: var(--dark2); }
+.testimonial-card:first-child {
+grid-column: span 2;
+background: var(--dark2);
+border-top: 2px solid var(--gold);
+}
+.stars {
+display: flex; gap: 4px; margin-bottom: 20px;
+}
+.star { color: var(--gold); font-size: 16px; }
+.testimonial-text {
+font-size: 16px; line-height: 1.8; color: #bbb;
+margin-bottom: 24px; font-style: italic;
+font-weight: 300;
+}
+.testimonial-card:first-child .testimonial-text { font-size: 18px; }
+.testimonial-author {
+display: flex; align-items: center; gap: 14px;
+}
+.author-avatar {
+width: 40px; height: 40px; border-radius: 50%;
+background: var(--gold);
+display: flex; align-items: center; justify-content: center;
+font-family: 'Bebas Neue', sans-serif;
+font-size: 18px; color: var(--black);
+flex-shrink: 0;
+}
+.author-name {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 15px; letter-spacing: 1px; font-weight: 700;
+color: var(--white); text-transform: uppercase;
+}
+.author-location { font-size: 12px; color: var(--gray); }
+
+/* EMERGENCY CTA */
+.emergency {
+background: var(--gold);
+padding: 80px 60px;
+display: flex; align-items: center; justify-content: space-between;
+gap: 40px; flex-wrap: wrap;
+}
+.emergency-left { flex: 1; min-width: 280px; }
+.emergency-eyebrow {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+color: rgba(0,0,0,0.5); font-weight: 700; margin-bottom: 12px;
+}
+.emergency-title {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(40px, 5vw, 72px); line-height: 0.95;
+color: var(--black); letter-spacing: 1px;
+}
+.emergency-right { text-align: right; }
+.emergency-phone {
+font-family: 'Bebas Neue', sans-serif;
+font-size: clamp(36px, 5vw, 60px); color: var(--black);
+letter-spacing: 2px; text-decoration: none;
+display: block; margin-bottom: 12px;
+transition: opacity 0.2s;
+}
+.emergency-phone:hover { opacity: 0.7; }
+.btn-dark {
+display: inline-flex; align-items: center; gap: 10px;
+background: var(--black); color: var(--gold);
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 13px; letter-spacing: 2.5px; text-transform: uppercase;
+font-weight: 700; padding: 14px 30px; text-decoration: none;
+transition: all 0.25s ease; cursor: none;
+}
+.btn-dark:hover { background: var(--dark3); transform: translateY(-2px); }
+
+/* SERVICE AREAS */
+.areas { background: var(--dark); }
+.areas-grid {
+display: grid; grid-template-columns: repeat(5, 1fr);
+gap: 2px; margin-top: 60px;
+}
+.area-tile {
+background: var(--dark2); padding: 28px 20px;
+text-align: center; transition: all 0.3s;
+border-bottom: 2px solid transparent;
+cursor: none;
+}
+.area-tile:hover { background: var(--dark3); border-color: var(--gold); transform: translateY(-3px); }
+.area-name {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 16px; letter-spacing: 1.5px; text-transform: uppercase;
+font-weight: 700; color: var(--white); margin-bottom: 4px;
+}
+.area-state { font-size: 12px; color: var(--gray); letter-spacing: 1px; }
+
+/* GUARANTEE */
+.guarantee {
+background: var(--black);
+display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+.guarantee-left {
+background: var(--gold); padding: 80px 60px;
+display: flex; flex-direction: column; justify-content: center;
+}
+.guarantee-left .section-label { color: var(--black); }
+.guarantee-left .section-label::before { background: var(--black); }
+.guarantee-left .section-title { color: var(--black); }
+.guarantee-right { padding: 80px 60px; }
+.guarantee-items { display: flex; flex-direction: column; gap: 28px; margin-top: 16px; }
+.guarantee-item { display: flex; gap: 20px; align-items: flex-start; }
+.guarantee-check {
+width: 24px; height: 24px; flex-shrink: 0;
+background: var(--gold); color: var(--black);
+display: flex; align-items: center; justify-content: center;
+font-size: 12px; font-weight: 900; margin-top: 2px;
+}
+.guarantee-item-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 17px; letter-spacing: 1px; font-weight: 700;
+color: var(--white); text-transform: uppercase; margin-bottom: 4px;
+}
+.guarantee-item-desc { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+/* FOOTER */
+footer {
+background: var(--dark);
+border-top: 1px solid rgba(245,184,0,0.1);
+padding: 70px 60px 40px;
+}
+.footer-top {
+display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+gap: 60px; margin-bottom: 60px;
+}
+.footer-brand p { font-size: 14px; color: var(--gray); line-height: 1.7; margin: 16px 0 24px; }
+.footer-phone-link {
+font-family: 'Bebas Neue', sans-serif;
+font-size: 28px; color: var(--gold); text-decoration: none; letter-spacing: 1px;
+transition: color 0.2s;
+}
+.footer-phone-link:hover { color: var(--gold-light); }
+.footer-col-title {
+font-family: 'Barlow Condensed', sans-serif;
+font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+color: var(--gold); font-weight: 700; margin-bottom: 20px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+font-size: 14px; color: var(--gray); text-decoration: none;
+transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+border-top: 1px solid rgba(255,255,255,0.06);
+padding-top: 30px;
+display: flex; justify-content: space-between; align-items: center;
+flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 13px; color: var(--gray); }
+.footer-copy a { color: var(--gold); text-decoration: none; }
+.footer-license {
+font-size: 12px; color: rgba(136,136,136,0.6); letter-spacing: 1px;
+}
+
+/* SCROLL ANIMATIONS */
+.reveal {
+opacity: 0; transform: translateY(30px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(24px); }
+to { opacity: 1; transform: none; }
+}
+@keyframes marquee {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+@keyframes pulse {
+0%, 100% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+nav { padding: 0 24px; }
+.nav-links { display: none; }
+section, .hero { padding: 80px 24px; }
+.hero-stats { display: none; }
+.about, .guarantee { grid-template-columns: 1fr; }
+.guarantee-left { padding: 60px 24px; }
+.guarantee-right { padding: 60px 24px; }
+.services-grid { grid-template-columns: 1fr; }
+.process-steps { grid-template-columns: 1fr 1fr; }
+.process-steps::before { display: none; }
+.testimonials-grid { grid-template-columns: 1fr; }
+.testimonial-card:first-child { grid-column: span 1; }
+.areas-grid { grid-template-columns: repeat(3, 1fr); }
+.footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+.emergency { padding: 60px 24px; }
+footer { padding: 60px 24px 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+<a href="#" class="nav-logo">
+<div class="nav-logo-bolt"></div>
+<div class="nav-logo-text">
+<span class="nav-logo-top">Watt's Right</span>
+<span class="nav-logo-bottom">Electric</span>
+</div>
+</a>
+<ul class="nav-links">
+<li><a href="#services">Services</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#areas">Service Areas</a></li>
+<li><a href="tel:9189720720" class="nav-cta">Call Now</a></li>
+</ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-grid"></div>
+<div class="hero-bolt-bg"></div>
+<div class="hero-content">
+<div class="hero-badge">
+<div class="hero-badge-dot"></div>
+<span>24/7 Emergency Service Available</span>
+</div>
+<h1 class="hero-title">
+WATT'S<br>
+<span class="gold">RIGHT</span><br>
+ELECTRIC
+</h1>
+<p class="hero-slogan">In Darkness &amp; Light — <em>We Do Watt's Right</em></p>
+<p class="hero-desc">Tulsa and Broken Arrow's most trusted, locally-owned electrical contractor. Licensed, bonded, insured — and ready to respond any hour of the day.</p>
+<div class="hero-actions">
+<a href="tel:9189720720" class="btn-primary">
+<span>Call (918) 972-0720</span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C8.9 21 3 15.1 3 8a2 2 0 0 1 2-4z"/></svg>
+</a>
+<a href="#services" class="btn-secondary">
+<span>Our Services</span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+</a>
+</div>
+</div>
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="hero-stat-num">4.9★</div>
+<div class="hero-stat-label">Google Rating</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">24/7</div>
+<div class="hero-stat-label">Emergency</div>
+</div>
+<div class="hero-stat">
+<div class="hero-stat-num">5+</div>
+<div class="hero-stat-label">Years Serving Tulsa</div>
+</div>
+</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+<div class="marquee-inner">
+<span class="marquee-item">⚡ Licensed & Insured <span class="marquee-sep"></span></span>
+<span class="marquee-item">24/7 Emergency Service <span class="marquee-sep"></span></span>
+<span class="marquee-item">Lifetime Craftsmanship Guarantee <span class="marquee-sep"></span></span>
+<span class="marquee-item">Locally Owned & Operated <span class="marquee-sep"></span></span>
+<span class="marquee-item">Transparent Upfront Pricing <span class="marquee-sep"></span></span>
+<span class="marquee-item">Serving Tulsa & Broken Arrow <span class="marquee-sep"></span></span>
+<span class="marquee-item">⚡ Licensed & Insured <span class="marquee-sep"></span></span>
+<span class="marquee-item">24/7 Emergency Service <span class="marquee-sep"></span></span>
+<span class="marquee-item">Lifetime Craftsmanship Guarantee <span class="marquee-sep"></span></span>
+<span class="marquee-item">Locally Owned & Operated <span class="marquee-sep"></span></span>
+<span class="marquee-item">Transparent Upfront Pricing <span class="marquee-sep"></span></span>
+<span class="marquee-item">Serving Tulsa & Broken Arrow <span class="marquee-sep"></span></span>
+</div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="about-visual reveal">
+<div class="about-img-frame">
+<div class="about-img-inner">
+<div class="about-big-bolt"></div>
+</div>
+</div>
+<div class="about-accent-line"></div>
+<div class="about-badge-founded">
+<span class="year">2020</span>
+<span class="label">Founded</span>
+</div>
+</div>
+<div class="about-text">
+<div class="section-label reveal">About Us</div>
+<h2 class="section-title reveal reveal-delay-1">YOUR NEIGHBOR.<br><span class="gold">YOUR ELECTRICIAN.</span></h2>
+<p class="reveal reveal-delay-2">We're not a national franchise — we're your neighbors. Watt's Right Electric was built on the belief that electrical work should be done safely, honestly, and with genuine care for the community we call home.</p>
+<p class="reveal reveal-delay-2">From a single tripped breaker to a full home rewire, our licensed team brings over 50 years of combined experience to every job. We show up prepared, we communicate clearly, and we don't leave until the work is done right.</p>
+<div class="about-pillars reveal reveal-delay-3">
+<div class="pillar">
+<div class="pillar-icon">🔒</div>
+<div class="pillar-title">Licensed & Insured</div>
+<div class="pillar-desc">OK License #00115130. Fully bonded and insured on every job.</div>
+</div>
+<div class="pillar">
+<div class="pillar-icon">💛</div>
+<div class="pillar-title">Community First</div>
+<div class="pillar-desc">Every dollar you spend stays local, supporting Tulsa families.</div>
+</div>
+<div class="pillar">
+<div class="pillar-icon">🕐</div>
+<div class="pillar-title">Always Available</div>
+<div class="pillar-desc">Day, night, weekend, holiday — we answer the call.</div>
+</div>
+<div class="pillar">
+<div class="pillar-icon">✅</div>
+<div class="pillar-title">Lifetime Guarantee</div>
+<div class="pillar-desc">We stand behind our craftsmanship, no exceptions.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+<div class="section-label reveal">What We Do</div>
+<h2 class="section-title reveal reveal-delay-1">EXPERT ELECTRICAL<br><span class="gold">SERVICES</span></h2>
+<div class="services-grid">
+
+<div class="service-card reveal">
+<div class="service-card-num">01</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+</div>
+<div class="service-name">Emergency Electrical</div>
+<div class="service-desc">Power out? Sparking outlet? We respond 24/7 with fully stocked vans ready to diagnose and fix the problem fast.</div>
+</div>
+
+<div class="service-card reveal reveal-delay-1">
+<div class="service-card-num">02</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+</div>
+<div class="service-name">Panel Upgrades</div>
+<div class="service-desc">Modern homes demand more power. We upgrade older panels to safely support everything from HVAC systems to EV chargers.</div>
+</div>
+
+<div class="service-card reveal reveal-delay-2">
+<div class="service-card-num">03</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+</div>
+<div class="service-name">Lighting Installation</div>
+<div class="service-desc">From recessed lighting and smart fixtures to full outdoor landscape lighting systems — we bring your vision to life.</div>
+</div>
+
+<div class="service-card reveal">
+<div class="service-card-num">04</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+</div>
+<div class="service-name">Whole-Home Rewiring</div>
+<div class="service-desc">Aluminum wiring, outdated systems, renovation projects — our team rewires homes cleanly and efficiently with minimal disruption.</div>
+</div>
+
+<div class="service-card reveal reveal-delay-1">
+<div class="service-card-num">05</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+</div>
+<div class="service-name">EV Charger Installation</div>
+<div class="service-desc">Level 2 home EV charger installation — we'll help you choose the right model and wire it safely for years of reliable charging.</div>
+</div>
+
+<div class="service-card reveal reveal-delay-2">
+<div class="service-card-num">06</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+</div>
+<div class="service-name">Surge Protection</div>
+<div class="service-desc">Protect your appliances and electronics with whole-home surge protection installed right at your main panel.</div>
+</div>
+
+<div class="service-card reveal">
+<div class="service-card-num">07</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+</div>
+<div class="service-name">Smart Home Wiring</div>
+<div class="service-desc">Smart lighting, automated systems, and custom wiring for the modern connected home — installed clean and configured right.</div>
+</div>
+
+<div class="service-card reveal reveal-delay-1">
+<div class="service-card-num">08</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+</div>
+<div class="service-name">Electrical Inspections</div>
+<div class="service-desc">Buying a home or unsure about your wiring? Our detailed inspections catch issues early and give you confidence and peace of mind.</div>
+</div>
+
+<div class="service-card reveal reveal-delay-2">
+<div class="service-card-num">09</div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+</div>
+<div class="service-name">Generator Installation</div>
+<div class="service-desc">Oklahoma weather demands backup power. We install whole-home generator systems sized exactly for your needs.</div>
+</div>
+
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+<div class="section-label reveal">How It Works</div>
+<h2 class="section-title reveal reveal-delay-1">OUR SIMPLE<br><span class="gold">PROCESS</span></h2>
+<div class="process-steps">
+<div class="process-step reveal">
+<div class="step-num-wrap"><span class="step-num">01</span></div>
+<div class="step-title">Call or Book Online</div>
+<div class="step-desc">Reach us any time — 24/7. Describe your issue and we'll get you scheduled fast, often same-day.</div>
+</div>
+<div class="process-step reveal reveal-delay-1">
+<div class="step-num-wrap"><span class="step-num">02</span></div>
+<div class="step-title">We Diagnose</div>
+<div class="step-desc">Our licensed electrician arrives on time, fully prepared, and diagnoses the issue with no guesswork.</div>
+</div>
+<div class="process-step reveal reveal-delay-2">
+<div class="step-num-wrap"><span class="step-num">03</span></div>
+<div class="step-title">Upfront Quote</div>
+<div class="step-desc">You receive a clear, honest estimate before any work begins. No hidden fees. No surprises.</div>
+</div>
+<div class="process-step reveal reveal-delay-3">
+<div class="step-num-wrap"><span class="step-num">04</span></div>
+<div class="step-title">Done Right</div>
+<div class="step-desc">We complete the work cleanly, safely, and to code — then back it with our lifetime craftsmanship guarantee.</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+<div class="section-label reveal">Reviews</div>
+<h2 class="section-title reveal reveal-delay-1">WHAT OUR <span class="gold">CUSTOMERS</span><br>ARE SAYING</h2>
+<div class="testimonials-grid">
+
+<div class="testimonial-card reveal">
+<div class="stars">
+<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+</div>
+<p class="testimonial-text">"I had a big electrical project at my house — new breakers and box in the garage, hot tub 240 conversion, new pool pump breakers, a new meter, whole home generator plugin, and proper grounding. The team did the entire project in one day. They cleaned everything up and made it look absolutely professional. A+++ service without question."</p>
+<div class="testimonial-author">
+<div class="author-avatar">JM</div>
+<div>
+<div class="author-name">Jason M.</div>
+<div class="author-location">Broken Arrow, OK · Verified Google Review</div>
+</div>
+</div>
+</div>
+
+<div class="testimonial-card reveal reveal-delay-1">
+<div class="stars">
+<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+</div>
+<p class="testimonial-text">"Watts fixed my issue and also found some frayed electrical wires in my attic and replaced them. My electrical panel was replaced as well. We now feel so much safer in our home."</p>
+<div class="testimonial-author">
+<div class="author-avatar">SL</div>
+<div>
+<div class="author-name">Sandra L.</div>
+<div class="author-location">Tulsa, OK · Verified Google Review</div>
+</div>
+</div>
+</div>
+
+<div class="testimonial-card reveal">
+<div class="stars">
+<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+</div>
+<p class="testimonial-text">"Allen and Eugene were very prompt and professional. It was a genuinely pleasant experience from start to finish."</p>
+<div class="testimonial-author">
+<div class="author-avatar">RK</div>
+<div>
+<div class="author-name">Robert K.</div>
+<div class="author-location">Tulsa, OK · Verified Google Review</div>
+</div>
+</div>
+</div>
+
+<div class="testimonial-card reveal reveal-delay-1">
+<div class="stars">
+<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+</div>
+<p class="testimonial-text">"Lucas was super helpful and answered every single question we had. Multiple issues throughout the house — he had sensible solutions for each one. Absolutely will use again."</p>
+<div class="testimonial-author">
+<div class="author-avatar">TH</div>
+<div>
+<div class="author-name">Tracy H.</div>
+<div class="author-location">Broken Arrow, OK · Verified Google Review</div>
+</div>
+</div>
+</div>
+
+<div class="testimonial-card reveal reveal-delay-2">
+<div class="stars">
+<span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+</div>
+<p class="testimonial-text">"Fast response, fair price, no BS. These guys know what they're doing. I won't call anyone else for electrical work."</p>
+<div class="testimonial-author">
+<div class="author-avatar">DW</div>
+<div>
+<div class="author-name">Derek W.</div>
+<div class="author-location">Owasso, OK · Verified Google Review</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- EMERGENCY CTA -->
+<div class="emergency">
+<div class="emergency-left">
+<p class="emergency-eyebrow">Available Right Now</p>
+<h2 class="emergency-title">ELECTRICAL<br>EMERGENCY?<br>WE'RE READY.</h2>
+</div>
+<div class="emergency-right">
+<a href="tel:9189720720" class="emergency-phone">(918) 972-0720</a>
+<a href="tel:9189720720" class="btn-dark">
+<span>Call for Immediate Help</span>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2C8.9 21 3 15.1 3 8a2 2 0 0 1 2-4z"/></svg>
+</a>
+</div>
+</div>
+
+<!-- SERVICE AREAS -->
+<section class="areas" id="areas">
+<div class="section-label reveal">Where We Work</div>
+<h2 class="section-title reveal reveal-delay-1">SERVICE <span class="gold">AREAS</span></h2>
+<div class="areas-grid">
+<div class="area-tile reveal"><div class="area-name">Tulsa</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-1"><div class="area-name">Broken Arrow</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-2"><div class="area-name">Owasso</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-3"><div class="area-name">Bixby</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-4"><div class="area-name">Jenks</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal"><div class="area-name">Sand Springs</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-1"><div class="area-name">Glenpool</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-2"><div class="area-name">Sapulpa</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-3"><div class="area-name">Claremore</div><div class="area-state">Oklahoma</div></div>
+<div class="area-tile reveal reveal-delay-4"><div class="area-name">Catoosa</div><div class="area-state">Oklahoma</div></div>
+</div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+<div class="guarantee-left">
+<div class="section-label reveal">Our Promise</div>
+<h2 class="section-title reveal reveal-delay-1">THE WATT'S RIGHT<br>GUARANTEE</h2>
+<p class="reveal reveal-delay-2" style="color:rgba(0,0,0,0.65); font-size:16px; line-height:1.8; margin-top:16px;">We stand behind every job we do — no exceptions, no fine print. If it's not right, we make it right.</p>
+</div>
+<div class="guarantee-right">
+<div class="guarantee-items">
+<div class="guarantee-item reveal">
+<div class="guarantee-check">✓</div>
+<div>
+<div class="guarantee-item-title">Lifetime Craftsmanship Guarantee</div>
+<div class="guarantee-item-desc">Every installation and repair is backed for life. We don't cut corners because we know we'll be standing behind our work forever.</div>
+</div>
+</div>
+<div class="guarantee-item reveal reveal-delay-1">
+<div class="guarantee-check">✓</div>
+<div>
+<div class="guarantee-item-title">Transparent, Upfront Pricing</div>
+<div class="guarantee-item-desc">You'll know the full cost before we ever start. No surprise invoices. No bait-and-switch. Just honest numbers.</div>
+</div>
+</div>
+<div class="guarantee-item reveal reveal-delay-2">
+<div class="guarantee-check">✓</div>
+<div>
+<div class="guarantee-item-title">On-Time or We Make It Right</div>
+<div class="guarantee-item-desc">We respect your time. If we're late without notice, we'll make it right. Your schedule matters to us.</div>
+</div>
+</div>
+<div class="guarantee-item reveal reveal-delay-3">
+<div class="guarantee-check">✓</div>
+<div>
+<div class="guarantee-item-title">Code-Compliant, Every Time</div>
+<div class="guarantee-item-desc">Every project meets or exceeds local electrical codes. Your home, your family, your safety — always our top priority.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-top">
+<div class="footer-brand">
+<a href="#" class="nav-logo" style="text-decoration:none; display:inline-flex;">
+<div class="nav-logo-bolt"></div>
+<div class="nav-logo-text">
+<span class="nav-logo-top">Watt's Right</span>
+<span class="nav-logo-bottom">Electric</span>
+</div>
+</a>
+<p>Tulsa and Broken Arrow's trusted, locally-owned electrical contractor. In darkness and light — we do Watt's Right.</p>
+<a href="tel:9189720720" class="footer-phone-link">(918) 972-0720</a>
+</div>
+<div>
+<div class="footer-col-title">Services</div>
+<ul class="footer-links">
+<li><a href="#">Emergency Electrical</a></li>
+<li><a href="#">Panel Upgrades</a></li>
+<li><a href="#">EV Charger Install</a></li>
+<li><a href="#">Whole-Home Rewiring</a></li>
+<li><a href="#">Generator Install</a></li>
+<li><a href="#">Lighting Installation</a></li>
+</ul>
+</div>
+<div>
+<div class="footer-col-title">Company</div>
+<ul class="footer-links">
+<li><a href="#">About Us</a></li>
+<li><a href="#">Careers</a></li>
+<li><a href="#">Blog</a></li>
+<li><a href="#">Reviews</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<div class="footer-col-title">Contact</div>
+<ul class="footer-links">
+<li><a href="tel:9189720720">(918) 972-0720</a></li>
+<li><a href="mailto:askwattson@callwattsright.com">askwattson@callwattsright.com</a></li>
+<li><a href="#">5865 S Garnett Rd, Suite C<br>Tulsa, OK 74146</a></li>
+<li style="color:var(--gold); font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:1px; margin-top:8px;">Open 24 Hours · 7 Days a Week</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p class="footer-copy">© 2026 Watt's Right Electric. All rights reserved. · <a href="#">Privacy Policy</a> · <a href="#">Terms</a></p>
+<p class="footer-license">OK Unlimited Contractors Electrical License #00115130</p>
+</div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursorRing');
+let mx = -100, my = -100, rx = -100, ry = -100;
+
+document.addEventListener('mousemove', e => {
+mx = e.clientX; my = e.clientY;
+cursor.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
+});
+
+function animateRing() {
+rx += (mx - rx - 18) * 0.12;
+ry += (my - ry - 18) * 0.12;
+cursorRing.style.transform = `translate(${rx}px, ${ry}px)`;
+requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button').forEach(el => {
+el.addEventListener('mouseenter', () => cursor.style.transform += ' scale(2)');
+el.addEventListener('mouseleave', () => {});
+});
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
 <div class="hero-stats">
 <div class="hero-stat">
 <div class="hero-stat-num">4.9★</div>
